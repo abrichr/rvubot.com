@@ -11,16 +11,16 @@ import { prisma } from '@app/utils/ssr';
 const options: NextAuthOptions = {
   providers: [
     FacebookProvider({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET,
+      clientId: process.env.FACEBOOK_ID || '',
+      clientSecret: process.env.FACEBOOK_SECRET || '',
     }),
     GitHubProvider({
-      clientId: config.GITHUB_ID,
-      clientSecret: config.GITHUB_SECRET,
+      clientId: config.GITHUB_ID || '',
+      clientSecret: config.GITHUB_SECRET || '',
     }),
     EmailProvider({
-      server: config.SMTP_SERVER,
-      from: config.SMTP_FROM,
+      server: config.SMTP_SERVER || '',
+      from: config.SMTP_FROM || '',
     }),
   ],
   adapter: PrismaAdapter(prisma),
